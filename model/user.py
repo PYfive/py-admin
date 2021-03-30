@@ -10,7 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(255), unique=True)
     nickname = db.Column(db.String(255), unique=True)
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, nickname):
         self.username = username
         self.password = password
         self.nickname = nickname

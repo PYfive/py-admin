@@ -1,6 +1,7 @@
 # coding=utf-8
 from flask import Flask, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 
 # create and configure the app
 '''
@@ -14,5 +15,6 @@ app = Flask(__name__, instance_relative_config=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@localhost:3306/test_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
-
+app.config['JWT_SECRET_KEY'] = 'super-secret'
+jwt = JWTManager(app)
 db = SQLAlchemy(app)
