@@ -1,5 +1,7 @@
+#!/usr/bin/python
 # coding=utf-8
-from flask import Flask, Response, jsonify
+from datetime import timedelta
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 
@@ -15,6 +17,10 @@ app = Flask(__name__, instance_relative_config=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@localhost:3306/test_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
-app.config['JWT_SECRET_KEY'] = 'super-secret'
+app.config["JWT_COOKIE_SECURE"] = False  # 生产环境设为因设为True
+app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this in your code!
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
 db = SQLAlchemy(app)
+

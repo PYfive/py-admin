@@ -27,6 +27,9 @@ class Constant(object):
     STATUS_SERVER_ERROR = ('1001', '服务器开小差了,请稍后重试')
     STATUS_ARGUMENT_ERROR = ('1002', '参数错误')
     STATUS_NO_AUTH = ('1004', '登录失败,用户名秘密错误')
+    STATUS_NO_TOKEN = ('1005', '没有token,请重新登录')
+    STATUS_TOKEN_EXPIRED = ('1006', 'token已过期,请重新登录')
+    STATUS_TOKEN_INVALID = ('1007', '无效的token,请重新登录')
 
 
 def json_ify(data):
