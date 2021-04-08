@@ -22,7 +22,7 @@ def teardown_request(err):
 
 # 登录接口定义，参数获取
 @user.route('/info', methods=["GET"])
-@jwt_required
+@jwt_required()
 def info():
     current_user = get_jwt_identity()
     err, result = info_service(current_user)
